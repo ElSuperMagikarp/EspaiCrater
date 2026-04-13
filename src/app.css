@@ -1,0 +1,35 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+@layer base {
+    :root {
+        interpolate-size: allow-keywords;
+    }
+
+    body {
+        @apply m-0 min-h-screen min-w-full;
+    }
+
+    main {
+        @apply min-h-screen min-w-full;
+    }
+
+    a {
+        @apply underline;
+    }
+}
+
+@layer utilities {
+    .size-full {
+        @apply w-full h-full
+    }
+
+    .flex-center {
+        @apply flex justify-center items-center
+    }
+
+    .text-title {
+        @apply text-white
+    }
+}
