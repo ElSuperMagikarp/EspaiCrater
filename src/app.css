@@ -1,6 +1,25 @@
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
+@import "tailwindcss";
+
+@theme {
+    /* Principals */
+    --color-crater: #9A3324;
+    --color-greda: #653024;
+    
+    /* Terra */
+    --color-terra-1: #D6AE93;
+    --color-terra-2: #5B8EDB;
+
+    /* Garrotxa */
+    --color-garrotxa-1: #284734;
+    --color-garrotxa-2: #719949;
+
+    /* Volcànic */
+    --color-volcanic-1: #BE531C;
+    --color-volcanic-2: #584446;
+    --color-volcanic-3: #A39382;
+    --color-volcanic-4: #425563;
+    --color-volcanic-5: #8D89A5;
+}
 
 @layer base {
     :root {
@@ -21,10 +40,6 @@
 }
 
 @layer utilities {
-    .size-full {
-        @apply w-full h-full
-    }
-
     .flex-center {
         @apply flex justify-center items-center
     }
