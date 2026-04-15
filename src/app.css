@@ -1,6 +1,9 @@
 @import "tailwindcss";
 
 @theme {
+    --font-regular: "Regular", ui-sans-serif, system-ui;
+    --font-space-mono: "SpaceMono", ui-sans-serif, system-ui;
+
     /* Principals */
     --color-crater: #9A3324;
     --color-greda: #653024;
@@ -21,9 +24,69 @@
     --color-volcanic-5: #8D89A5;
 }
 
+@font-face {
+  font-family: "Regular";
+  src: url("/src/lib/assets/fonts/Regular/Regular-Light.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Regular";
+  src: url("/src/lib/assets/fonts/Regular/Regular-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Regular";
+  src: url("/src/lib/assets/fonts/Regular/Regular-Medium.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Regular";
+  src: url("/src/lib/assets/fonts/Regular/Regular-Semibold.otf") format("opentype");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Regular";
+  src: url("/src/lib/assets/fonts/Regular/Regular-SemiboldItalic.otf") format("opentype");
+  font-weight: 600;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Regular";
+  src: url("/src/lib/assets/fonts/Regular/Regular-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Regular";
+  src: url("/src/lib/assets/fonts/Regular/Regular-Black.otf") format("opentype");
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "SpaceMono";
+  src: url("/src/lib/assets/fonts/SpaceMono/SpaceMono-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
 @layer base {
     :root {
         interpolate-size: allow-keywords;
+    }
+
+    * {
+        @apply font-regular;
     }
 
     body {
