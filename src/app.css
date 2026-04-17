@@ -103,11 +103,56 @@
 }
 
 @layer utilities {
-    .flex-center {
-        @apply flex justify-center items-center
-    }
+  .flex-center {
+    @apply flex justify-center items-center
+  }
 
-    .text-title {
-        @apply text-white
-    }
+  .text-title {
+    @apply text-white
+  }
+
+  /* THEMES */
+  .theme-crater {
+    --theme-color: var(--color-crater);
+  }
+
+  .theme-terra {
+    --theme-color: var(--color-terra-2);
+  }
+
+  .theme-garrotxa {
+    --theme-color: var(--color-garrotxa-2);
+  }
+
+  .theme-volcanic {
+    --theme-color: var(--color-volcanic-1);
+  }
+}
+
+@layer components {
+  /* BUTTON */
+  .button {
+    @apply p-1 px-3 border bg-transparent rounded-br-xl font-medium text-white hover:cursor-pointer;
+    border-color: var(--theme-color);
+  }
+
+  a.button {
+    @apply no-underline;
+  }
+
+  .button.active {
+    background-color: var(--theme-color);
+  }
+
+  .menu .button {
+    @apply uppercase
+  }
+
+  .submenu .button {
+    @apply normal-case
+  }
+
+  .menu .button.active {
+    @apply font-bold;
+  }
 }
