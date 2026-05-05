@@ -1,6 +1,7 @@
 <script>
     import Corner from "./parts/cornerBlock.svelte";
     import SideSymbol from "../primitives/sideSymbol.svelte";
+    import Logo from "../primitives/logo.svelte";
 
     let { screenName } = $props();
 
@@ -17,6 +18,7 @@
     let cornerSize = 17;
     let sideSymbolsStrokeWidth = 0.3;
     let sideSymbolSize = 32;
+    let logoSize = 32;
 
     // DATE/TIME
     import { onMount } from "svelte";
@@ -80,7 +82,7 @@
     <!-- Bottom/Right -->
     <div class="{generalClasses} {bottom} {right}">
         <Corner corner="br" strokeWidth={cornersStrokeWidth} size={cornerSize}>
-            <span>EspaiCrater</span>
+            <Logo size={logoSize} />
         </Corner>
     </div>
 
