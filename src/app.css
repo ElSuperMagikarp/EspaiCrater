@@ -1,27 +1,27 @@
 @import "tailwindcss";
 
 @theme {
-    --font-regular: "Regular", ui-sans-serif, system-ui;
-    --font-space-mono: "SpaceMono", ui-sans-serif, system-ui;
+  --font-regular: "Regular", ui-sans-serif, system-ui;
+  --font-space-mono: "SpaceMono", ui-sans-serif, system-ui;
 
-    /* Principals */
-    --color-crater: #9A3324;
-    --color-greda: #653024;
-    
-    /* Terra */
-    --color-terra-1: #D6AE93;
-    --color-terra-2: #5B8EDB;
+  /* Principals */
+  --color-crater: #9A3324;
+  --color-greda: #653024;
+  
+  /* Terra */
+  --color-terra-1: #D6AE93;
+  --color-terra-2: #5B8EDB;
 
-    /* Garrotxa */
-    --color-garrotxa-1: #284734;
-    --color-garrotxa-2: #719949;
+  /* Garrotxa */
+  --color-garrotxa-1: #284734;
+  --color-garrotxa-2: #719949;
 
-    /* Volcànic */
-    --color-volcanic-1: #BE531C;
-    --color-volcanic-2: #584446;
-    --color-volcanic-3: #A39382;
-    --color-volcanic-4: #425563;
-    --color-volcanic-5: #8D89A5;
+  /* Volcànic */
+  --color-volcanic-1: #BE531C;
+  --color-volcanic-2: #584446;
+  --color-volcanic-3: #A39382;
+  --color-volcanic-4: #425563;
+  --color-volcanic-5: #8D89A5;
 }
 
 @font-face {
@@ -81,25 +81,25 @@
 }
 
 @layer base {
-    :root {
-        interpolate-size: allow-keywords;
-    }
+  :root {
+    interpolate-size: allow-keywords;
+  }
 
-    * {
-        @apply font-regular;
-    }
+  * {
+    @apply font-regular;
+  }
 
-    body {
-        @apply m-0 min-h-screen min-w-full;
-    }
+  body {
+    @apply m-0 min-h-screen min-w-full;
+  }
 
-    main {
-        @apply min-h-screen min-w-full;
-    }
+  main {
+    @apply min-h-screen min-w-full;
+  }
 
-    a {
-        @apply underline;
-    }
+  a {
+    @apply underline;
+  }
 }
 
 @layer utilities {
