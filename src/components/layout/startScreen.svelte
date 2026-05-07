@@ -1,5 +1,7 @@
 <script lang="ts">
     import { onMount } from "svelte";
+    import { page } from "$app/state";
+    import { goto } from "$app/navigation";
 
     type Theme =
         | "theme-crater"
@@ -18,13 +20,16 @@
         Hidden: "hidden",
     };
 
-    let state = $state(State.Idle);
+    let initialRoute = $state(page.url.pathname);
+
+    let screenState = $state(State.Idle);
 
     function handleClick() {
-        if (state === State.Idle) {
-            state = State.Intro;
-        } else if (state === State.Intro) {
-            state = State.Hidden;
+        if (screenState === State.Idle) {
+            screenState = State.Intro;
+        } else if (screenState === State.Intro) {
+            goto(initialRoute);
+            screenState = State.Hidden;
         }
     }
 
@@ -37,7 +42,7 @@
         clearTimeout(inactivityTimeout);
 
         inactivityTimeout = setTimeout(() => {
-            state = State.Idle;
+            screenState = State.Idle;
         }, INACTIVITY_MS);
     }
 
@@ -58,7 +63,7 @@
     });
 </script>
 
-{#if state !== State.Hidden}
+{#if screenState !== State.Hidden}
     <button
         class="w-full h-screen flex-center
             bg-black
@@ -66,11 +71,11 @@
             {theme}"
         onclick={handleClick}
     >
-        {#if state === State.Idle}
+        {#if screenState === State.Idle}
             <h1 class="text-2xl font-bold select-none uppercase">
                 {screenName}
             </h1>
-        {:else if state === State.Intro}
+        {:else if screenState === State.Intro}
             <h1 class="text-2xl font-bold select-none uppercase">Intro</h1>
         {/if}
     </button>
