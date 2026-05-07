@@ -127,6 +127,18 @@
   .theme-volcanic {
     --theme-color: var(--color-volcanic-1);
   }
+
+  .bg-theme {
+    background-color: var(--theme-color);
+  }
+
+  .border-theme {
+    border-color: var(--theme-color);
+  }
+
+  .text-theme {
+    color: var(--theme-color);
+  }
 }
 
 @layer components {

@@ -1,9 +1,20 @@
-<script>
+<script lang="ts">
     import Corner from "./parts/cornerBlock.svelte";
     import SideSymbol from "../primitives/sideSymbol.svelte";
     import Logo from "../primitives/logo.svelte";
 
-    let { screenName } = $props();
+    import StartScreen from "./startScreen.svelte";
+
+    type Theme =
+        | "theme-crater"
+        | "theme-terra"
+        | "theme-garrotxa"
+        | "theme-volcanic";
+
+    let { screenName, theme } = $props<{
+        screenName: string;
+        theme: Theme;
+    }>();
 
     let generalClasses = "absolute";
 
@@ -54,10 +65,15 @@
     });
 </script>
 
+<!-- START SCREEN -->
+<StartScreen {screenName} {theme} />
+
+<!-- OVERLAY -->
 <div
     class="w-full h-screen
             absolute pointer-events-none
-            text-white text-xs"
+            text-white text-xs
+            {theme}"
 >
     <!-- Top/Left -->
     <div class="{generalClasses} {top} {left}">
@@ -68,8 +84,14 @@
 
     <!-- Top/Right -->
     <div class="{generalClasses} {top} {right}">
-        <Corner corner="tr" strokeWidth={cornersStrokeWidth} size={cornerSize}
-        ></Corner>
+        <Corner corner="tr" strokeWidth={cornersStrokeWidth} size={cornerSize}>
+            <div class="flex gap-2">
+                <button class="button">CAT</button>
+                <button class="button">ES</button>
+                <button class="button">ENG</button>
+                <button class="button">FRA</button>
+            </div>
+        </Corner>
     </div>
 
     <!-- Bottom/Left -->
