@@ -11,8 +11,10 @@
         | "theme-garrotxa"
         | "theme-volcanic";
 
-    let { screenName, theme } = $props<{
+    let { overlayText, screenName, welcomeMessage, theme } = $props<{
+        overlayText: string;
         screenName: string;
+        welcomeMessage: string;
         theme: Theme;
     }>();
 
@@ -66,7 +68,7 @@
 </script>
 
 <!-- START SCREEN -->
-<StartScreen {screenName} {theme} />
+<StartScreen {screenName} {welcomeMessage} {theme} />
 
 <!-- OVERLAY -->
 <div
@@ -78,18 +80,18 @@
     <!-- Top/Left -->
     <div class="{generalClasses} {top} {left}">
         <Corner corner="tl" strokeWidth={cornersStrokeWidth} size={cornerSize}>
-            <p class="uppercase font-bold">{screenName}</p>
+            <p class="uppercase font-bold">{overlayText}</p>
         </Corner>
     </div>
 
     <!-- Top/Right -->
     <div class="{generalClasses} {top} {right}">
         <Corner corner="tr" strokeWidth={cornersStrokeWidth} size={cornerSize}>
-            <div class="flex gap-2">
-                <button class="button">CAT</button>
-                <button class="button">ES</button>
-                <button class="button">ENG</button>
-                <button class="button">FRA</button>
+            <div class="flex gap-2 pointer-events-auto">
+                <button class="button bg-black/50">CAT</button>
+                <button class="button bg-black/50">ES</button>
+                <button class="button bg-black/50">ENG</button>
+                <button class="button bg-black/50">FRA</button>
             </div>
         </Corner>
     </div>

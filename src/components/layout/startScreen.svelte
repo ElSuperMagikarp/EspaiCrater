@@ -9,8 +9,9 @@
         | "theme-garrotxa"
         | "theme-volcanic";
 
-    let { screenName, theme } = $props<{
+    let { screenName, welcomeMessage, theme } = $props<{
         screenName: string;
+        welcomeMessage: string;
         theme: Theme;
     }>();
 
@@ -76,7 +77,10 @@
                 {screenName}
             </h1>
         {:else if screenState === State.Intro}
-            <h1 class="text-2xl font-bold select-none uppercase">Intro</h1>
+            <div class="flex flex-col gap-y-3">
+                <h1 class="text-2xl font-bold select-none uppercase">HOLA!</h1>
+                <p>{welcomeMessage}</p>
+            </div>
         {/if}
     </button>
 {/if}
