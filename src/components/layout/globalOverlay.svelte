@@ -1,7 +1,7 @@
 <script lang="ts">
     import Corner from "./parts/cornerBlock.svelte";
-    import SideSymbol from "../primitives/sideSymbol.svelte";
-    import Logo from "../primitives/logo.svelte";
+    import SideSymbol from "../svg/sideSymbol.svelte";
+    import Logo from "../svg/logo.svelte";
 
     import StartScreen from "./startScreen.svelte";
 

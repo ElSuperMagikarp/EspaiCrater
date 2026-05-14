@@ -1,5 +1,5 @@
 <script lang="ts">
-    import Corner from "../../primitives/corner.svelte";
+    import Corner from "../../svg/corner.svelte";
     import type { Snippet } from "svelte";
 
     type CornerType = "tl" | "tr" | "bl" | "br";
