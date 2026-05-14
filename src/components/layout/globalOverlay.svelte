@@ -11,12 +11,17 @@
         | "theme-garrotxa"
         | "theme-volcanic";
 
-    let { overlayText, screenName, welcomeMessage, theme } = $props<{
-        overlayText: string;
-        screenName: string;
-        welcomeMessage: string;
-        theme: Theme;
-    }>();
+    let { overlayText, screenName, welcomeMessage, theme, initialRoute } =
+        $props<{
+            overlayText: string;
+            screenName: string;
+            welcomeMessage: string;
+            theme: Theme;
+            initialRoute: string | null;
+        }>();
+
+    let currentRoute = $derived(page.url.pathname);
+    let showBackButton = $derived(currentRoute !== initialRoute);
 
     let generalClasses = "absolute";
 
@@ -35,6 +40,8 @@
 
     // DATE/TIME
     import { onMount } from "svelte";
+    import { page } from "$app/state";
+    import { goto } from "$app/navigation";
 
     let now = new Date();
 
@@ -68,7 +75,7 @@
 </script>
 
 <!-- START SCREEN -->
-<StartScreen {screenName} {welcomeMessage} {theme} />
+<StartScreen {screenName} {welcomeMessage} {theme} {initialRoute} />
 
 <!-- OVERLAY -->
 <div
@@ -95,6 +102,31 @@
             </div>
         </Corner>
     </div>
+
+    <!-- Back Button -->
+    {#if showBackButton}
+        <div class="absolute bottom-17 flex items-end h-16">
+            <svg
+                viewBox="0 0 15 100"
+                preserveAspectRatio="none"
+                class="h-full w-8 text-theme"
+            >
+                <path
+                    d="M 0 0 Q 7.5 25 15 25 L 15 100 Q 6 100 0 75 Z"
+                    fill="currentColor"
+                />
+            </svg>
+            <button
+                type="button"
+                onclick={() => goto(initialRoute)}
+                class="button active text-xl font-bold uppercase
+                    rounded-br-none rounded-tr-xl
+                    h-3/4 flex-center pointer-events-auto"
+            >
+                Inici
+            </button>
+        </div>
+    {/if}
 
     <!-- Bottom/Left -->
     <div class="{generalClasses} {bottom} {left}">

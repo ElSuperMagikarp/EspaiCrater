@@ -9,10 +9,11 @@
         | "theme-garrotxa"
         | "theme-volcanic";
 
-    let { screenName, welcomeMessage, theme } = $props<{
+    let { screenName, welcomeMessage, theme, initialRoute } = $props<{
         screenName: string;
         welcomeMessage: string;
         theme: Theme;
+        initialRoute: string | null;
     }>();
 
     const State = {
@@ -20,8 +21,6 @@
         Intro: "intro",
         Hidden: "hidden",
     };
-
-    let initialRoute = $state(page.url.pathname);
 
     let screenState = $state(State.Idle);
 
@@ -44,6 +43,7 @@
 
         inactivityTimeout = setTimeout(() => {
             screenState = State.Idle;
+            goto(initialRoute);
         }, INACTIVITY_MS);
     }
 
@@ -52,6 +52,7 @@
     }
 
     onMount(() => {
+        goto(initialRoute);
         resetInactivityTimer();
 
         window.addEventListener("click", handleActivity);

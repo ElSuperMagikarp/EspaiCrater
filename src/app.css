@@ -127,25 +127,24 @@
   .theme-volcanic {
     --theme-color: var(--color-volcanic-1);
   }
+}
 
-  .bg-theme {
-    background-color: var(--theme-color);
-  }
+@utility bg-theme {
+  background-color: var(--theme-color);
+}
 
-  .border-theme {
-    border-color: var(--theme-color);
-  }
+@utility border-theme {
+  border-color: var(--theme-color);
+}
 
-  .text-theme {
-    color: var(--theme-color);
-  }
+@utility text-theme {
+  color: var(--theme-color);
 }
 
 @layer components {
   /* BUTTON */
   .button {
-    @apply p-1 px-3 border bg-transparent rounded-br-xl font-medium text-white hover:cursor-pointer;
-    border-color: var(--theme-color);
+    @apply p-1 px-3 border bg-transparent border-theme rounded-br-xl font-medium text-white hover:cursor-pointer;
   }
 
   a.button {
@@ -153,7 +152,7 @@
   }
 
   .button.active {
-    background-color: var(--theme-color);
+    @apply bg-theme;
   }
 
   .menu .button {
@@ -166,5 +165,32 @@
 
   .menu .button.active {
     @apply font-bold;
+  }
+
+  .home-button {
+    width: 200px;
+    height: 100px;
+
+    @apply bg-theme border-0 cursor-pointer
+      text-white 
+      flex justify-end items-end;
+
+    mask-image: url("lib/images/backHomeButton.png");
+    mask-mode: alpha;
+    mask-repeat: no-repeat;
+    mask-size: contain;
+    mask-position: bottom;
+
+    /*clip-path: path("M0 0 Q2 2 30 25 L180 25 L200 40 L200 100 L30 100 L0 75 Z"); */
+
+/*     clip-path: polygon(
+      0 0,
+      15% 25%,
+      90% 25%,
+      100% 40%,
+      100% 100%,
+      15% 100%,
+      0 75%
+    ); */
   }
 }
