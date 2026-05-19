@@ -1,0 +1,1 @@
+# Anàlisis de la còpia de seguretat
