@@ -11,6 +11,6 @@
     welcomeMessage="Endinsa’t al magma"
     theme="theme-terra"
     initialRoute={layoutBase}
-/>
-
-<slot />
+>
+    <slot />
+</GlobalOverlay>

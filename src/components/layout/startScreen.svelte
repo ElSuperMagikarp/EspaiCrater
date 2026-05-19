@@ -1,18 +1,14 @@
 <script lang="ts">
     import { onMount } from "svelte";
-    import { page } from "$app/state";
     import { goto } from "$app/navigation";
-
-    type Theme =
-        | "theme-crater"
-        | "theme-terra"
-        | "theme-garrotxa"
-        | "theme-volcanic";
+    import type { ScreenTheme } from "$lib/types/screenTheme";
+    import AnimatedBackground from "./animatedBackground.svelte";
+    import Arrow from "../svg/arrow.svelte";
 
     let { screenName, welcomeMessage, theme, initialRoute } = $props<{
         screenName: string;
         welcomeMessage: string;
-        theme: Theme;
+        theme: ScreenTheme;
         initialRoute: string | null;
     }>();
 
@@ -66,22 +62,33 @@
 </script>
 
 {#if screenState !== State.Hidden}
-    <button
-        class="w-full h-screen flex-center
-            bg-black
-            absolute text-white
-            {theme}"
-        onclick={handleClick}
-    >
-        {#if screenState === State.Idle}
-            <h1 class="text-2xl font-bold select-none uppercase">
-                {screenName}
-            </h1>
-        {:else if screenState === State.Intro}
-            <div class="flex flex-col gap-y-3">
-                <h1 class="text-2xl font-bold select-none uppercase">HOLA!</h1>
-                <p>{welcomeMessage}</p>
+    <div class="absolute size-full">
+        <AnimatedBackground {theme} />
+
+        <button
+            class="w-full h-screen flex-center
+                overflow-hidden
+                absolute text-white
+                {theme}"
+            onclick={handleClick}
+        >
+            <div class="relative z-10">
+                {#if screenState === State.Idle}
+                    <h1 class="text-7xl font-bold select-none uppercase">
+                        {screenName}
+                    </h1>
+                {:else if screenState === State.Intro}
+                    <div class="flex-center flex-col gap-y-4">
+                        <h1 class="text-6xl font-bold select-none uppercase">
+                            HOLA!
+                        </h1>
+
+                        <p class="text-4xl select-none">{welcomeMessage}</p>
+
+                        <Arrow size={8} strokeWidth={0.2} direction="down" />
+                    </div>
+                {/if}
             </div>
-        {/if}
-    </button>
+        </button>
+    </div>
 {/if}

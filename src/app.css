@@ -24,6 +24,7 @@
   --color-volcanic-5: #8D89A5;
 }
 
+/* FONTS */
 @font-face {
   font-family: "Regular";
   src: url("/src/lib/assets/fonts/Regular/Regular-Light.otf") format("opentype");
@@ -80,6 +81,28 @@
   font-style: normal;
 }
 
+/* ANIMATIONS */
+@keyframes float-y {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(25%);
+    }
+}
+
+@keyframes float-x {
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(25%);
+    }
+}
+
+/* CLASSES */
 @layer base {
   :root {
     interpolate-size: allow-keywords;

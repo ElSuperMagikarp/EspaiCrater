@@ -2,5 +2,5 @@
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
 fn main() {
-    test_inicidetot_lib::run()
+    espai_crater_lib::run()
 }

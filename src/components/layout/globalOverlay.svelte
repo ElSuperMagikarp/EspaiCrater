@@ -1,24 +1,31 @@
 <script lang="ts">
-    import Corner from "./parts/cornerBlock.svelte";
-    import SideSymbol from "../svg/sideSymbol.svelte";
-    import Logo from "../svg/logo.svelte";
+    import { onMount, type Snippet } from "svelte";
+    import { page } from "$app/state";
+    import { goto } from "$app/navigation";
+    import type { ScreenTheme } from "$lib/types/screenTheme";
 
     import StartScreen from "./startScreen.svelte";
+    import AnimatedBackground from "./animatedBackground.svelte";
+    import Corner from "./parts/cornerBlock.svelte";
+    import SideSymbol from "../svg/sideSymbol.svelte";
+    import Arrow from "../svg/arrow.svelte";
+    import Logo from "../svg/logo.svelte";
 
-    type Theme =
-        | "theme-crater"
-        | "theme-terra"
-        | "theme-garrotxa"
-        | "theme-volcanic";
-
-    let { overlayText, screenName, welcomeMessage, theme, initialRoute } =
-        $props<{
-            overlayText: string;
-            screenName: string;
-            welcomeMessage: string;
-            theme: Theme;
-            initialRoute: string | null;
-        }>();
+    let {
+        overlayText,
+        screenName,
+        welcomeMessage,
+        theme,
+        initialRoute,
+        children,
+    } = $props<{
+        overlayText: string;
+        screenName: string;
+        welcomeMessage: string;
+        theme: ScreenTheme;
+        initialRoute: string | null;
+        children?: Snippet;
+    }>();
 
     let currentRoute = $derived(page.url.pathname);
     let showBackButton = $derived(currentRoute !== initialRoute);
@@ -39,10 +46,6 @@
     let logoSize = 32;
 
     // DATE/TIME
-    import { onMount } from "svelte";
-    import { page } from "$app/state";
-    import { goto } from "$app/navigation";
-
     let now = new Date();
 
     let time = $state("");
@@ -73,6 +76,12 @@
         return () => clearInterval(interval);
     });
 </script>
+
+<AnimatedBackground {theme} darkened />
+
+<div class="absolute w-full h-screen">
+    {@render children?.()}
+</div>
 
 <!-- START SCREEN -->
 <StartScreen {screenName} {welcomeMessage} {theme} {initialRoute} />
@@ -119,10 +128,11 @@
             <button
                 type="button"
                 onclick={() => goto(initialRoute)}
-                class="button active text-xl font-bold uppercase
+                class="button active text-2xl font-bold uppercase
                     rounded-br-none rounded-tr-xl
-                    h-3/4 flex-center pointer-events-auto"
+                    h-3/4 flex-center gap-4 pr-10 pointer-events-auto"
             >
+                <Arrow size={2} />
                 Inici
             </button>
         </div>
