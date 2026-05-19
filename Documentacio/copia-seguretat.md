@@ -1,6 +1,7 @@
 # Anàlisis de la còpia de seguretat
 Explicació del que he trobat i el que m’ha semblat (o no) útil a la còpia de seguretat de l'Espai Cràter.
 
+
 ## Executables
 > Ruta: `1_BACKUP/EXECUTABLES`
 
