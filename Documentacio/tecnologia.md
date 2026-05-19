@@ -11,7 +11,7 @@ Cada pantalla té un executable diferent, la qual cosa implica que hi havia un p
 En la següent secció explico amb profunditat la meva opinió sobre la utilització de Unity en aquest projecte, així que no detallaré gaire, però diré que no em sembla per res bona opció.
 
 
-## Anàlisis de tecnologia
+## Anàlisi de tecnologies
 
 He analitzat múltiples tecnologies per considerar quina és l'adequada per fer el nou projecte. Tot seguit exposo els seus punts forts i febles segons el meu punt de vista:
 
